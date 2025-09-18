@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+html{
+    scroll-behavior: smooth;
+
+}
+
+*{
+    font-family: 'Quicksand', sans-serif;
+}
+
+h1,
+h2,
+h3,
+.zilla-slab{
+    font-family: 'Zilla Slab', serif;
+}
