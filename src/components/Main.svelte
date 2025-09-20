@@ -3,9 +3,9 @@
 import Step from "./Step.svelte";
 
     let steps = [
-        {name: 'Snake', icon:'fa-solid fa-gamepad'},
-        {name: 'Naive Bayes Replica', icon:'fa-solid fa-brain'},
-        {name: 'Weather App', icon:'fa-solid fa-cloud-sun'}
+        {name: 'Snake', icon:'fa-solid fa-gamepad', href:'https://github.com/konrad-m5/L031K6_Snake'},
+        {name: 'Naive Bayes Replica', icon:'fa-solid fa-brain', href:'https://github.com/konrad-m5/Naives-bayes-replica'},
+        {name: 'Weather App', icon:'fa-solid fa-cloud-sun', href:'https://github.com/konrad-m5/weatherapp'}
     ];
 
     let benefits = [
@@ -35,7 +35,7 @@ import Step from "./Step.svelte";
                 </h2>
 
                 <p class="text-base sm:text-lg md:text-xl">
-                    My favourite technologies are Python, C and Golang.
+                    My favourite technologies are Python, C and Java.
                 </p>
 
                 <a class="blueShadow mx-auto lg:mr-auto text-base sm:text-lg md:text-xl zilla-slab
@@ -72,16 +72,7 @@ import Step from "./Step.svelte";
             
 
         </div>
-
-        <a href="youtube.com/@BFrederickss"
-            target="_blank" 
-            class="mx-auto px-4 py-2 rounded-md border border-solid border-white
-            flex items-center gap-2 -mb-4 sm:-mb-0 -mt-10 hover:border-violet-700 duration-200">
-
-                <i class="fa-regular fa-play-circle" aria-label="Watch video"></i>
-                <p>watch now</p>
-
-        </a>
+    
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-10">
             <Step step={steps[0]}> 

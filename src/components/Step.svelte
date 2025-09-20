@@ -3,9 +3,9 @@
 
 </script>
 
-<a href={step.href} target="_blank" class="p-4 sm:p-6 md:p-8 flex flex-col
+<div class="p-4 sm:p-6 md:p-8 flex flex-col
 gap-4 rounded-lg border border-solid border-red-700 text-center group
-cursor-pointer hover:border-red-400 duration-200">
+hover:border-red-400 duration-200">
     
     <div class="grid place-items-center px-4 text-5xl md:text-6xl
     -mt-10 sm:-mt-12 md:-mt-14 lg:-mt-16 mx-auto duration-200" style="background: #160001;">
@@ -22,12 +22,14 @@ cursor-pointer hover:border-red-400 duration-200">
         relative after:absolute after:top-0 after:h-0 after:right-full
         after:w-full after:h-full after:duration-200 after:bg-white
         hover:after:translate-x-full after:z-[-1] overflow-hidden">
-        
-            <p class="relative z-4">Go to &rarr;</p>
+
+            <a href="{step.href}" target="_blank">
+                <p class="relative z-4">Go to &rarr;</p>
+            </a>
 
         </div>
 
     </div>
 
 
-</a>
+</div>
