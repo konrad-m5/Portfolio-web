@@ -6,7 +6,8 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 		<!-- background animation cdnf-->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.min.js "></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.fog.min.js"></script>
 
 		<!-- Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,7 +20,30 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		%sveltekit.head%
 	</head>
-	<body data-sveltekit-preload-data="hover" class="bg-slate-950 text-white relative">
+	<body data-sveltekit-preload-data="hover" class=" text-white relative" style="background: #160001;">
 		<div style="display: contents" class="relative z-[1]">%sveltekit.body%</div>
+		<div class="absolute min-h-screen top-0 left-0  w-full z-[-1] opacity-70">
+			<div class="absolute inset-0" id="fog-js"></div>
+		</div>
+		<!-- VANTA FOG MADE BY Patricio Gonzalez Vivo-->
+		<script>
+			
+		 VANTA.FOG({
+						 el: "#fog-js",
+						 mouseControls: true,
+						 touchControls: true,
+						 gyroControls: false,
+						 minHeight: 200.00,
+						 minWidth: 200.00,
+						 highlightColor: 0xffffff, // white highlights
+						 midtoneColor: 0xcccccc,  // light gray midtones
+						 lowlightColor: 0x1b0001, // your background color
+						 baseColor: 0x1b0001,     // your background color
+						 blurFactor: 0.5,
+						 speed: 1.0,
+						 zoom: 1.0
+					 });
+		</script>
 	</body>
 </html>
+	

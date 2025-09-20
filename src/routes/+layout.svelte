@@ -23,8 +23,8 @@
 	<div class={"fixed bottom-0 w-full duration-200 flex p-10 z-[10] "+ (
 		y > 0 ? 'opacity-100 transition-opacity duration-200 ' : 'opacity-0 pointer-events-none transition-opacity duration-200 '
 	)}>
-		<button onclick={scrollToTop} class="ml-auto rounded-full bg-slate-900 text-white-400 px-3 sm:px-4
-		hover:bg-slate-800 cursor-pointer" aria-label="Scroll to top">
+		<button onclick={scrollToTop} class="ml-auto rounded-full bg-red-900 text-white-400 px-3 sm:px-4
+		hover:bg-red-800 cursor-pointer" aria-label="Scroll to top">
 			<i class="fa-solid fa-arrow-up grid place-item-center aspect-square"></i>
 		</button>
 	</div>
