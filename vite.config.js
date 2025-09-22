@@ -7,4 +7,7 @@ export default defineConfig({
     tailwindcss(),
     sveltekit(),
   ],
+  optimizeDeps: {
+    include: ['lodash.get', 'lodash.isequal', 'lodash.clonedeep']
+  }
 });

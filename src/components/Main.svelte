@@ -1,6 +1,9 @@
 <script>
     import Background from "./Background.svelte";
-import Step from "./Step.svelte";
+    import Step from "./Step.svelte";
+    import { browser } from '$app/environment';
+    import { onMount, tick } from "svelte";
+    let Carousel = null; // client-only component
 
     let steps = [
         {name: 'Snake', icon:'fa-solid fa-gamepad', href:'https://github.com/konrad-m5/L031K6_Snake'},
@@ -14,14 +17,50 @@ import Step from "./Step.svelte";
         {name: 'Continuous Learning', description: 'I am committed to continuous learning and self-improvement, staying updated with the latest industry trends and best practices.'}
     ];
             
+// tripled array + carousel index + loop helpers
+    const tripled = [...steps, ...steps, ...steps];
+    let current = steps.length; // start in middle set
+    let transitioning = false;
+    let noTransition = false;
+
+    // load Carousel only on client (avoid ResizeObserver SSR error)
+    onMount(async () => {
+        if (!browser) return;
+        const mod = await import("svelte-carousel/src/components/Carousel/Carousel.svelte");
+        Carousel = mod.default;
+        await tick();
+    });
+
+    // handle the infinite-loop jump after a slide transition
+    async function handleTransitionEnd() {
+        transitioning = false;
+        if (current < steps.length) {
+            noTransition = true;
+            current = steps.length * 2 - 1;
+            await tick();
+            noTransition = false;
+            return;
+        }
+        if (current >= steps.length * 2) {
+            noTransition = true;
+            current = steps.length;
+            await tick();
+            noTransition = false;
+            return;
+        }
+    }
+
+    function handleNextClick() {
+      // call the carousel instance method if available
+      Carousel?.goToNext?.();
+    }
 
 </script>
 
+
+
 <main class= "flex flex-col flex-1 p-4 mt-32">
     
-    <!-- Intro Section
-    grid grid-cols-1 gap-10 
-    -->
     <section id="introPage" 
         class="relative overflow-hidden pt-32 pb-8 sm:pt-40 sm:pb-14 mb-[24vh]"
         style="background: transparent;">
@@ -59,40 +98,57 @@ import Step from "./Step.svelte";
 
 
     <!-- Projects Section -->
-    <!-- ADD A CAROUSEL MAYBE IDK-->
-    <section id="projects" class="py-20 lg:py-32 flex flex-col gap-24  ">
-        <div class="flex flex-col gap-2 text-center">
-            <h6 class="text-lg sm:text-xl md:text-2xl">
-                A few of my projects
-            </h6>
+<section id="projects" class="py-20 lg:py-32 flex flex-col gap-24">
+    <div class="flex flex-col gap-2 text-center">
+        <h6 class="text-lg sm:text-xl md:text-2xl">
+            A few of my projects
+        </h6>
+        <h3 class="font-semibold text-3xl sm:text-4xl md:text-5xl">
+            Curious to see my work?
+        </h3>
+    </div>
 
-            <h3 class="font-semibold text-3xl sm:text-4xl md:text-5xl">
-                Curious to see my work?
-            </h3>
+<!-- Carousel of projects -->
+{#if Carousel}
+  <svelte:component
+    this={Carousel}
+    bind:this={carouselRef}
+    {current}
+    on:transitionEnd={handleTransitionEnd}
+    transitionDuration={noTransition ? 0 : 500}
+    itemsToShow={1}
+    itemsToScroll={1}
+    autoplay
+    autoplayDuration={5000}
+    loop={true}
+    showArrows={true}
+    showIndicators={false}
+    pagescount={3}
+    class="max-w-4xl mx-auto my-carousel"
+  >
+    {#each steps as step, i (i)}
+      <div class="p-4 sm:p-6 duration-200 mx-2 flex-shrink-0 mx-auto" style="transform: {i === current ? 'scale(1)' : 'scale(0.9)'};">
+        <Step {step}>
+          {#if i === 0}
+            <p class="text-lg sm:text-xl md:text-2xl">A snake game made in a NUCLEO board.</p>
+          {:else if i === 1}
+            <p class="text-lg sm:text-xl md:text-2xl">A Naive Bayes replica built with Java.</p>
+          {:else}
+            <p class="text-lg sm:text-xl md:text-2xl">A weather app that provides real-time weather updates built in Java.</p>
+          {/if}
+        </Step>
+      </div>
+    {/each}
+  </svelte:component>
 
-            
-
-        </div>
-    
-
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-10">
-            <Step step={steps[0]}> 
-                <p>A snake game made in a NUCLEO board.</p>
-            </Step>
-
-            <Step step={steps[1]}> 
-                <p>A Naive Bayes replica built with Java.</p>
-            </Step>
-
-            <Step step={steps[2]}> 
-                <p>A weather app that provides real-time weather updates built in Java.</p>
-            </Step>
-        </div>
-
-      
+{:else}
+  <div class="w-full h-[260px] flex items-center justify-center text-gray-400">
+    Loading projects...
+  </div>
+{/if}
 
 
-    </section><!--end projects section-->
+</section>
 
     <section id="aboutme" class="py-20 pt-10 lg:pt-16 lg:py-32 flex flex-col
     gap-16 sm:gap-20 md:gap-24 relative">

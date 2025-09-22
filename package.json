@@ -19,6 +19,7 @@
 	"dependencies": {
 		"@tailwindcss/vite": "^4.1.13",
 		"simplex-noise": "^4.0.3",
+		"svelte-carousel": "^1.0.25",
 		"tailwindcss": "^4.1.13"
 	}
 }
