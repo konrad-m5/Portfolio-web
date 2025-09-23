@@ -3,7 +3,9 @@
     import Step from "./Step.svelte";
     import { browser } from '$app/environment';
     import { onMount, tick } from "svelte";
+
     let Carousel = null; // client-only component
+    let carouselRef;
 
     let steps = [
         {name: 'Snake', icon:'fa-solid fa-gamepad', href:'https://github.com/konrad-m5/L031K6_Snake'},
@@ -31,6 +33,8 @@
         await tick();
     });
 
+ 
+
     // handle the infinite-loop jump after a slide transition
     async function handleTransitionEnd() {
         transitioning = false;
@@ -50,13 +54,33 @@
         }
     }
 
-    function handleNextClick() {
-      // call the carousel instance method if available
-      Carousel?.goToNext?.();
-    }
+
+        // Custom arrow handlers for the carousel
+        function showNextPage() {
+            if (carouselRef && typeof carouselRef.goToNext === 'function') {
+                carouselRef.goToNext();
+            }
+        }
+
+        function showPrevPage() {
+            if (carouselRef && typeof carouselRef.goToPrev === 'function') {
+                carouselRef.goToPrev();
+            }
+        }
+
 
 </script>
 
+<style>
+    .carousel__arrow{
+        background: #160001;
+        color: white;
+        border-radius: 50%;
+        padding: 0.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease;
+    }
+</style>
 
 
 <main class= "flex flex-col flex-1 p-4 mt-32">
@@ -124,8 +148,14 @@
     showArrows={true}
     showIndicators={false}
     pagescount={3}
+    showNextPage={true}
+    showPrevPage={true}
     class="max-w-4xl mx-auto my-carousel"
   >
+
+  <div slot="next" class="carousel__arrow cursor-pointer absolute top-1/2 right-4 transform -translate-y-1/2 z-10" on:click={showNextPage} aria-label="Next">
+    <i class="fa-solid fa-chevron-right"></i>
+  </div>
     {#each steps as step, i (i)}
       <div class="p-4 sm:p-6 duration-200 mx-2 flex-shrink-0 mx-auto" style="transform: {i === current ? 'scale(1)' : 'scale(0.9)'};">
         <Step {step}>
@@ -139,6 +169,9 @@
         </Step>
       </div>
     {/each}
+    <div slot="prev" class="carousel__arrow cursor-pointer absolute top-1/2 left-4 transform -translate-y-1/2 z-10" on:click={showPrevPage}>
+      <i class="fa-solid fa-chevron-left"></i>
+    </div>
   </svelte:component>
 
 {:else}
