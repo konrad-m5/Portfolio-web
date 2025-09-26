@@ -109,7 +109,7 @@
                                 group-hover:translate-x-full z-0 duration-200">
             
                     </div>
-                    <h4 class="relative z-9">Get in Touch &rarr;</h4>
+                    <h4 class="relative z-9">Contact me &rarr;</h4>
                 </a>
 
         </div><!--end div-->
