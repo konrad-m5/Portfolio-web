@@ -101,16 +101,31 @@
                     My favourite technologies are Python, C and Java.
                 </p>
 
-                <a class="blueShadow mx-auto lg:mr-auto text-base sm:text-lg md:text-xl zilla-slab
-                relative overflow-hidden px-6 py-3 group rounded-full bg-white text-slate-950 cursor-pointer"
-                href="#contact">
+                <div class="flex gap-4 mx-auto lg:mr-auto">
+                    <!-- GitHub Button -->
+                    <a href="https://github.com/konrad-m5" 
+                       target="_blank"
+                       class="blueShadow text-base sm:text-lg md:text-xl 
+                       relative overflow-hidden p-4 group rounded-full bg-white text-slate-950 cursor-pointer
+                       hover:scale-110 transition-all duration-200">
+                        <div class="absolute top-0 right-full w-full h-full bg-red-400 opacity-20
+                                    group-hover:translate-x-full z-0 duration-200">
+                        </div>
+                        <i class="fab fa-github relative z-9 text-xl"></i>
+                    </a>
 
-                    <div class = "absolute top-0 right-full w-full h-full bg-red-400 opacity-20
-                                group-hover:translate-x-full z-0 duration-200">
-            
-                    </div>
-                    <h4 class="relative z-9">Contact me &rarr;</h4>
-                </a>
+                    <!-- LinkedIn Button -->
+                    <a href="https://www.linkedin.com/in/konrad-malara-257355312/" 
+                       target="_blank"
+                       class="blueShadow text-base sm:text-lg md:text-xl 
+                       relative overflow-hidden p-4 group rounded-full bg-white text-slate-950 cursor-pointer
+                       hover:scale-110 transition-all duration-200">
+                        <div class="absolute top-0 right-full w-full h-full bg-red-400 opacity-20
+                                    group-hover:translate-x-full z-0 duration-200">
+                        </div>
+                        <i class="fab fa-linkedin relative z-9 text-xl"></i>
+                    </a>
+                </div>
 
         </div><!--end div-->
 
