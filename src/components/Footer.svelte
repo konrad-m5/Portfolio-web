@@ -8,7 +8,7 @@ flex flex-col gap-4 sm:gap-8 justify-center items-center">
     <div class="flex flex-col gap-4 items-center justify-center">
 
         <!-- Email -->
-        <p><b class="pr-2">Email</b>malarakonrad05@gmail.com</p>
+        <p><b class="pr-2">Email</b><a href="mailto:malarakonrad05@gmail.com" target="_blank">malarakonrad05@gmail.com</a></p>
         
         <!-- Github -->
         <p>
