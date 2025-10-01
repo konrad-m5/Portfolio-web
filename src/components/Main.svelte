@@ -106,6 +106,7 @@
                     <!-- GitHub Button -->
                     <a href="https://github.com/konrad-m5" 
                        target="_blank"
+                       aria-label="GitHub Profile"
                        class="blueShadow text-base sm:text-lg md:text-xl 
                        relative overflow-hidden p-4 group rounded-full bg-white text-slate-950 cursor-pointer
                        hover:scale-110 transition-all duration-200">
@@ -118,6 +119,7 @@
                     <!-- LinkedIn Button -->
                     <a href="https://www.linkedin.com/in/konrad-malara-257355312/" 
                        target="_blank"
+                        aria-label="LinkedIn Profile"
                        class="blueShadow text-base sm:text-lg md:text-xl 
                        relative overflow-hidden p-4 group rounded-full bg-white text-slate-950 cursor-pointer
                        hover:scale-110 transition-all duration-200">
@@ -169,9 +171,9 @@
     class="max-w-4xl mx-auto my-carousel"
   >
 
-  <div slot="next" class="carousel__arrow cursor-pointer absolute top-1/2 right-4 transform -translate-y-1/2 z-10" on:click={showNextPage} aria-label="Next">
-    <i class="fa-solid fa-chevron-right"></i>
-  </div>
+    <button slot="next" class="carousel__arrow cursor-pointer absolute top-1/2 right-4 transform -translate-y-1/2 z-10" on:click={showNextPage} aria-label="Next slide">
+        <i class="fa-solid fa-chevron-right"></i>
+    </button>
     {#each steps as step, i (i)}
       <div class="p-4 sm:p-6 duration-200 mx-2 flex-shrink-0 mx-auto" style="transform: {i === current ? 'scale(1)' : 'scale(0.9)'};">
         <Step {step}>
@@ -182,14 +184,14 @@
             {:else if i === 2}
                 <p class="text-lg sm:text-xl md:text-2xl">A weather app that provides real-time weather updates built in Java.</p>
             {:else if i === 3}
-                <p class="text-lg sm:text-xl md:text-2xl">An app that visualises sorting algorithms built in Rust.</p>
+                <p class="text-lg sm:text-xl md:text-2xl">A program that visualises sorting algorithms built in Rust.</p>
             {/if}
         </Step>
       </div>
     {/each}
-    <div slot="prev" class="carousel__arrow cursor-pointer absolute top-1/2 left-4 transform -translate-y-1/2 z-10" on:click={showPrevPage}>
-      <i class="fa-solid fa-chevron-left"></i>
-    </div>
+    <button slot="prev" class="carousel__arrow cursor-pointer absolute top-1/2 left-4 transform -translate-y-1/2 z-10" on:click={showPrevPage} aria-label="Previous slide">
+        <i class="fa-solid fa-chevron-left"></i>
+    </button>
   </svelte:component>
 
 {:else}
