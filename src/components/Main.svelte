@@ -10,7 +10,8 @@
     let steps = [
         {name: 'Snake', icon:'fa-solid fa-gamepad', href:'https://github.com/konrad-m5/L031K6_Snake'},
         {name: 'Naive Bayes Replica', icon:'fa-solid fa-brain', href:'https://github.com/konrad-m5/Naives-bayes-replica'},
-        {name: 'Weather App', icon:'fa-solid fa-cloud-sun', href:'https://github.com/konrad-m5/weatherapp'}
+        {name: 'Weather App', icon:'fa-solid fa-cloud-sun', href:'https://github.com/konrad-m5/weatherapp'},
+        {name: 'Algorithm Sort Visualiser', icon :'fa-solid fa-chart-simple', href:'https://github.com/konrad-m5/algorithm-sort-visualiser'}
     ];
 
     let benefits = [
@@ -174,13 +175,15 @@
     {#each steps as step, i (i)}
       <div class="p-4 sm:p-6 duration-200 mx-2 flex-shrink-0 mx-auto" style="transform: {i === current ? 'scale(1)' : 'scale(0.9)'};">
         <Step {step}>
-          {#if i === 0}
-            <p class="text-lg sm:text-xl md:text-2xl">A snake game made in a NUCLEO board.</p>
-          {:else if i === 1}
-            <p class="text-lg sm:text-xl md:text-2xl">A Naive Bayes replica built with Java.</p>
-          {:else}
-            <p class="text-lg sm:text-xl md:text-2xl">A weather app that provides real-time weather updates built in Java.</p>
-          {/if}
+            {#if i === 0}
+                <p class="text-lg sm:text-xl md:text-2xl">A snake game made in a NUCLEO board.</p>
+            {:else if i === 1}
+                <p class="text-lg sm:text-xl md:text-2xl">A Naive Bayes replica built with Java.</p>
+            {:else if i === 2}
+                <p class="text-lg sm:text-xl md:text-2xl">A weather app that provides real-time weather updates built in Java.</p>
+            {:else if i === 3}
+                <p class="text-lg sm:text-xl md:text-2xl">An app that visualises sorting algorithms built in Rust.</p>
+            {/if}
         </Step>
       </div>
     {/each}
